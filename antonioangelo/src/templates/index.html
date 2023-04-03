@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto_eletrônica</title>
+</head>
+<body>
+    <h1>Projeto de eletrônica</h1>
+    <h2>selecione a posição do robô por aqui</h2>
+    <p>posicao do robô no eixo X</p>
+    <input type="text" name="" id="x">
+    <p>posicao do robô no eixo Y</p>
+    <input type="text" name="" id="y">
+    <p>posicao do robô no eixo Z</p>
+    <input type="text" name="" id="z">
+    <p>posicao do robô no eixo r</p>
+    <input type="text" name="" id="r">
+    <p>posicao da junta 1</p>
+    <input type="text" name="" id="j1">
+    <p>posicao da junta 2</p>
+    <input type="text" name="" id="j2">
+    <p>posicao da junta 3</p>
+    <input type="text" name="" id="j3">
+    <p>posicao da junta 4</p>
+    <input type="text" name="" id="j4">
+    <br><br>
+
+    <input type="button" value="enviar dados"  onclick= "postpositions()">
+
+    <script>
+    async function postpositions() {
+        const response = await fetch('http://127.0.0.1:5000/position', {
+            method: 'POST',
+            body: JSON.stringify({
+                x: document.getElementById('x').value,
+                y: document.getElementById('y').value,
+                z: document.getElementById('z').value,
+                r: document.getElementById('r').value,
+                j1: document.getElementById('j1').value,
+                j2: document.getElementById('j2').value,
+                j3: document.getElementById('j3').value,
+                j4: document.getElementById('j4').value
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const responseText = await response.text();
+        console.log(responseText); // logs 'OK'
+    }
+</script>
+</body>
+</html>
