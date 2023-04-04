@@ -1,4 +1,4 @@
-# SImulação Braço robótico
+# Simulação Braço robótico
 trabalho de eletrônica da semana 9 
 
 Trabalho da aula de programação focado em fazer uma simulação feita no GODOT do braço robótico que move-se com base na alteração dos valores do eixo contidos 
